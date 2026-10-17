@@ -12,7 +12,7 @@ export default protectedAi(async (req, res) => {
     `Allowed rooms: ${JSON.stringify(rooms)}. Allowed categories: ${JSON.stringify(categories)}. ` +
     'Use null if nothing matches. "text" is a short English keyword only if the user names a specific item. No explanations.';
 
-  const raw = await ask(system, query, 150);
+  const raw = await ask(system, query, 300);
   const m = raw.match(/\{[\s\S]*\}/);
   if (!m) throw Object.assign(new Error('bad'), { code: 'BAD_AI' });
   const j = JSON.parse(m[0]);
